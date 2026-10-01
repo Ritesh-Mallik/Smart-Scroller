@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Scroll Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <div class="logo" aria-hidden="true">SSA</div>
+        <div>
+          <h1>Smart Scroll Assistant</h1>
+          <p id="permissionHint">Voice and camera run locally after you enable them.</p>
+        </div>
+      </header>
+
+      <section class="status-panel">
+        <div class="status-row">
+          <span>Status</span>
+          <strong id="statusText" class="status-pill paused">Paused</strong>
+        </div>
+        <div class="command-box">
+          <span>Detected command</span>
+          <strong id="detectedCommand">None</strong>
+        </div>
+        <p id="errorMessage" class="error" role="status"></p>
+      </section>
+
+      <section class="toggles" aria-label="Control toggles">
+        <label class="toggle-card">
+          <input id="voiceToggle" type="checkbox">
+          <span class="toggle-ui"></span>
+          <span>
+            <strong>Voice Control</strong>
+            <small>Use microphone commands</small>
+          </span>
+        </label>
+
+        <label class="toggle-card">
+          <input id="handToggle" type="checkbox">
+          <span class="toggle-ui"></span>
+          <span>
+            <strong>Hand Gesture Control</strong>
+            <small>Use webcam gestures</small>
+          </span>
+        </label>
+      </section>
+
+      <section class="sliders" aria-label="Settings">
+        <label>
+          <span>Scroll speed <strong id="scrollSpeedValue">650</strong></span>
+          <input id="scrollSpeed" type="range" min="150" max="1600" step="50">
+        </label>
+        <label>
+          <span>Gesture sensitivity <strong id="sensitivityValue">5</strong></span>
+          <input id="sensitivity" type="range" min="1" max="10" step="1">
+        </label>
+        <label class="checkbox-row">
+          <input id="continuousToggle" type="checkbox">
+          <span>Continuous scroll for up/down commands</span>
+        </label>
+        <label class="checkbox-row">
+          <input id="previewToggle" type="checkbox">
+          <span>Show camera preview</span>
+        </label>
+      </section>
+
+      <section class="camera-wrap" id="cameraWrap" hidden>
+        <video id="cameraPreview" autoplay muted playsinline></video>
+        <canvas id="trackingCanvas" width="240" height="160"></canvas>
+      </section>
+
+      <section class="buttons" aria-label="Manual controls">
+        <button id="scrollUpBtn" type="button">Scroll Up</button>
+        <button id="scrollDownBtn" type="button">Scroll Down</button>
+        <button id="stopBtn" type="button" class="danger">Stop</button>
+        <button id="testVoiceBtn" type="button">Test Voice</button>
+        <button id="testCameraBtn" type="button">Test Camera</button>
+      </section>
+    </main>
+
+    <script src="utils.js"></script>
+    <script src="voiceControl.js"></script>
+    <script src="vendor/mediapipe/hands.js"></script>
+    <script src="handTracking.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
