@@ -1,0 +1,1 @@
+Smart Scroll Assistant is a Chrome extension that lets you control webpage, PDF, and slide scrolling with voice commands or hand gestures. It uses Chrome's Web Speech API and local MediaPipe hand tracking, offers manual controls and adjustable sensitivity, and keeps audio and camera processing on your device with no backend or uploads, for privacy.
